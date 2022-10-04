@@ -48,11 +48,45 @@ function playRound(playerSelection, computerSelection) {
         }
     }
 
+    console.log(result)
     // Return result
-    return result
+    if (result === winStatement) {
+        return "player"
+    } else if (result === loseStatement) {
+        return "computer"
+    }
+    
 }
 
-const computerSelection = getComputerChoice()
-const playerSelection = "rock"
-let result = playRound(playerSelection, computerSelection)
-console.log(result)
+function game() {
+    // Initiate score variables
+    let playerScore = 0
+    let computerScore = 0
+
+    // Loop to play 5 times
+    for (let i = 0; i < 5; i++) {
+        // Make selections
+        const playerSelection = prompt("Make your selection")
+        const computerSelection = getComputerChoice()
+        // play a round and get result
+        result = playRound(playerSelection, computerSelection)
+        console.log(i)
+        // Increment appropriate score
+        if (result === "player") {
+            playerScore++
+        } else if (result === "computer") {
+            computerScore++
+        }
+    }
+
+    // Print the result
+    if (playerScore > computerScore) {
+        console.log("Player wins!")
+    } else {
+        console.log("Computer wins!")
+    }
+
+    return 0
+}
+
+game()
