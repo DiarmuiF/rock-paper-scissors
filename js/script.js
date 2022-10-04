@@ -10,7 +10,7 @@ function getComputerChoice() {
         computerChoice = "scissors"
     }
 
-    console.log(computerChoice)
+    console.log(`Computer selects ${computerChoice}`)
     return computerChoice
 }
 
@@ -70,7 +70,6 @@ function game() {
         const computerSelection = getComputerChoice()
         // play a round and get result
         result = playRound(playerSelection, computerSelection)
-        console.log(i)
         // Increment appropriate score
         if (result === "player") {
             playerScore++
@@ -82,8 +81,10 @@ function game() {
     // Print the result
     if (playerScore > computerScore) {
         console.log("Player wins!")
-    } else {
+    } else if (playerScore < computerScore) {
         console.log("Computer wins!")
+    } else {
+        console.log("It's a tie!")
     }
 
     return 0
